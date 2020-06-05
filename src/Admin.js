@@ -2,9 +2,9 @@ import React, { Component, Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Topbar from "./Topbar";
 
-const Dashboard = React.lazy(() => import("./Dashboard"));
+const Dashboard = React.lazy(() => import("./admin/Dashboard"));
 
-export default class App extends Component {
+export default class Admin extends Component {
    render() {
       return (
          <BrowserRouter basename="/admin">

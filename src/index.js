@@ -6,12 +6,12 @@ import './assets/css/fontawesome/font-awesome.min.css'
 import './assets/css/mcustomscrollbar/jquery.mCustomScrollbar.css'
 import './assets/css/animate/animate.min.css'
 import './assets/css/index.css'
-import App from "./App"
+import Admin from "./Admin"
 import * as serviceWorker from "./serviceWorker"
 
 ReactDOM.render(
    <React.StrictMode>
-      <App />
+      <Admin />
    </React.StrictMode>,
    document.getElementById("root")
 );
