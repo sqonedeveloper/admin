@@ -15,8 +15,8 @@ export default class Admin extends Component {
                      fallback={
                         <div className="page-loading-frame v2">
                            <div className="page-loading-loader">
-                              <div className="dot1"></div>
-                              <div className="dot2"></div>
+                              <div className="dot1" />
+                              <div className="dot2" />
                            </div>
                         </div>
                      }
