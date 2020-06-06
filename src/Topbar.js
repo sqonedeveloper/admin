@@ -18,7 +18,7 @@ export default class Topbar extends Component {
                </Link>
                <ul className="animated zoomIn">
                   <li>
-                     <Link to="/invoice">Invoice</Link>
+                     <Link to="/table">Table</Link>
                   </li>
                   <li>
                      <Link to="/profile">Profile</Link>

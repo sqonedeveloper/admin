@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Topbar from "./Topbar";
 
 const Dashboard = React.lazy(() => import("./admin/Dashboard"));
+const Table = React.lazy(() => import('./admin/table/Lists'))
 
 export default class Admin extends Component {
    render() {
@@ -22,6 +23,7 @@ export default class Admin extends Component {
                      }
                   >
                      <Route path="/dashboard" exact component={Dashboard} />
+                     <Route path="/table" exact component={Table} />
                   </Suspense>
                </Switch>
             </div>
