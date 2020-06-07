@@ -3,11 +3,53 @@ import { Row, Col } from "react-bootstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./style.css";
 import { Link } from "react-router-dom";
-import Search from './Search'
-import Filter from './Filter'
+import Search from "./Search";
+import Filter from "./Filter";
 
 export default class Lists extends Component {
+   constructor() {
+      super();
+
+      this.state = {
+         checkboxValues: ["1", "2"],
+         checkboxSelected: [],
+      };
+
+      this._onChange = this._onChange.bind(this);
+   }
+
+   _onChange(e) {
+      const { name, value, checked, type } = e.target;
+      const { checkboxValues, checkboxSelected } = this.state;
+
+      if (type === "checkbox") {
+         if (name === "checkall") {
+            if (checked) {
+               let setChecked = [];
+               for (let i = 0; i < checkboxValues.length; i++) {
+                  setChecked.push(checkboxValues[i]);
+               }
+
+               this.setState({ checkboxSelected: setChecked });
+            } else {
+               this.setState({ checkboxSelected: [] });
+            }
+         } else {
+            if (checked) {
+               this.setState({ checkboxSelected: checkboxSelected.concat(value) });
+            } else {
+               let index = checkboxSelected.indexOf(value)
+               checkboxSelected.splice(index, 1)
+               
+               this.setState({ checkboxSelected: checkboxSelected })
+            }
+         }
+      }
+   }
+
    render() {
+      const { checkboxSelected } = this.state;
+
       return (
          <>
             <ul className="breadcrumb">
@@ -29,10 +71,14 @@ export default class Lists extends Component {
                               <thead>
                                  <tr>
                                     <th className="check-column">
-                                       <input type="checkbox" />
+                                       <input
+                                          name="checkall"
+                                          onChange={this._onChange}
+                                          type="checkbox"
+                                       />
                                     </th>
                                     <th className="gravatar">
-                                       <span className="fa fa-camera-retro"></span>
+                                       <span className="fa fa-camera-retro" />
                                     </th>
                                     <th>Name</th>
                                     <th>Email</th>
@@ -44,7 +90,17 @@ export default class Lists extends Component {
                               <tbody>
                                  <tr>
                                     <th className="check-column">
-                                       <input type="checkbox" />
+                                       <input
+                                          value="1"
+                                          type="checkbox"
+                                          onChange={this._onChange}
+                                          checked={
+                                             checkboxSelected.indexOf("1") !==
+                                             -1
+                                                ? true
+                                                : false
+                                          }
+                                       />
                                     </th>
                                     <td className="gravatar">
                                        <LazyLoadImage
@@ -88,7 +144,17 @@ export default class Lists extends Component {
                                  </tr>
                                  <tr>
                                     <th className="check-column">
-                                       <input type="checkbox" />
+                                       <input
+                                          value="2"
+                                          type="checkbox"
+                                          onChange={this._onChange}
+                                          checked={
+                                             checkboxSelected.indexOf("2") !==
+                                             -1
+                                                ? true
+                                                : false
+                                          }
+                                       />
                                     </th>
                                     <td className="gravatar">
                                        <LazyLoadImage
