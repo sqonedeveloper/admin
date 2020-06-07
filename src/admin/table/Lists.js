@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./style.css";
+import { Link } from "react-router-dom";
+import Search from './Search'
+import Filter from './Filter'
 
 export default class Lists extends Component {
    render() {
@@ -19,7 +22,9 @@ export default class Lists extends Component {
                <Row>
                   <Col md={12}>
                      <div className="panel panel-default">
-                        <div className="panel-body">
+                        <div className="panel-body clearfix">
+                           <Search />
+                           <Filter />
                            <table className="widefat fixed table-list">
                               <thead>
                                  <tr>
@@ -54,25 +59,69 @@ export default class Lists extends Component {
                                        Dick Barslow
                                        <div className="row-actions">
                                           <span className="edit">
-                                             <a title="Edit" href="">
+                                             <Link title="Edit" to="#">
                                                 Edit
-                                             </a>{" "}
+                                             </Link>{" "}
                                              |{" "}
                                           </span>
                                           <span>
-                                             <a href="" title="Print">
+                                             <Link to="#" title="Print">
                                                 Print
-                                             </a>{" "}
+                                             </Link>{" "}
                                              |{" "}
                                           </span>
                                           <span>
-                                             <a
-                                                href=""
+                                             <Link
+                                                to="#"
                                                 title="Delete"
                                                 className="delete"
                                              >
                                                 Delete
-                                             </a>{" "}
+                                             </Link>{" "}
+                                          </span>
+                                       </div>
+                                    </td>
+                                    <td>dick.barslow@example.com</td>
+                                    <td>UI Developer</td>
+                                    <td>2020/06/06</td>
+                                    <td>Rating</td>
+                                 </tr>
+                                 <tr>
+                                    <th className="check-column">
+                                       <input type="checkbox" />
+                                    </th>
+                                    <td className="gravatar">
+                                       <LazyLoadImage
+                                          effect="blur"
+                                          src="https://secure.gravatar.com/avatar/53bb90b1488815d64cbd3ef574e75f76?s=36&amp;d=mm&amp;r=g"
+                                          className="avatar avatar-36 photo"
+                                          height="36"
+                                          width="36"
+                                       />
+                                    </td>
+                                    <td>
+                                       Dick Barslow
+                                       <div className="row-actions">
+                                          <span className="edit">
+                                             <Link title="Edit" to="#">
+                                                Edit
+                                             </Link>{" "}
+                                             |{" "}
+                                          </span>
+                                          <span>
+                                             <Link to="#" title="Print">
+                                                Print
+                                             </Link>{" "}
+                                             |{" "}
+                                          </span>
+                                          <span>
+                                             <Link
+                                                to="#"
+                                                title="Delete"
+                                                className="delete"
+                                             >
+                                                Delete
+                                             </Link>{" "}
                                           </span>
                                        </div>
                                     </td>
